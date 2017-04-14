@@ -10,7 +10,7 @@
         $result = mysqli_query($connection, $query);
         
         if(!$result) {
-            die("Insert SQL command failed: " . mysqli_error());
+            die("Insert SQL command failed: " . mysqli_error($connection));
         }
     }
 ?>
