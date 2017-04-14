@@ -1,12 +1,6 @@
 <?php     
-     $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
-     
-     if($connection) {
-         echo "Connected to MySQL successfully.";
-     } else {
-         die("Could not connect to database.");
-     }
-     
+     include "db.php";
+
      $query = "SELECT * FROM users";
      
      $result = mysqli_query($connection, $query);
@@ -37,8 +31,8 @@
                   <?php
                    print_r($rows);
                    ?> 
-                </pre
-            <?php
+                </pre>
+                <?php
                } 
             ?>
         </div>

@@ -1,16 +1,8 @@
 <?php
+    include "db.php";
     if(isset($_POST['submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        
-        // Please also refer to the diff between mysqli_connect and mysql_connect.
-        $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
-        
-        if($connection) {
-            echo "Connected to MySQL successfully.";
-        } else {
-            die("Could not connect to database.");
-        }
     }
 ?>
 
