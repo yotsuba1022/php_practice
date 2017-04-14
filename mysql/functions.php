@@ -26,7 +26,7 @@
         $allUsers = mysqli_query($connection, $query);
      
         if(!$allUsers) {
-         die("Select SQL command failed: " . mysqli_error());
+            die("Select SQL command failed: " . mysqli_error());
         }
 
         while($user = mysqli_fetch_assoc($allUsers)) {
