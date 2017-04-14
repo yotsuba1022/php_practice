@@ -1,17 +1,55 @@
 <?php include "db.php"; ?>
 <?php
-    function showAllUsers() {    
+    function createUser() {
+        global $connection;
+        if(isset($_POST['submit'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $create = "INSERT INTO users(username, password) ";
+            $create .= "VALUES ('$username', '$password')";
+
+            $result = mysqli_query($connection, $create);
+
+            if(!$result) {
+                die("Insert SQL command failed: " . mysqli_error($connection));
+            } else {
+                echo "User created.";
+            }
+        }
+    }
+
+    function showAllIds() {    
         global $connection;
         $query = "SELECT * FROM users";
-        $result = mysqli_query($connection, $query);
+        
+        $allUsers = mysqli_query($connection, $query);
      
-        if(!$result) {
-         die("Insert SQL command failed: " . mysqli_error());
+        if(!$allUsers) {
+         die("Select SQL command failed: " . mysqli_error());
         }
 
-        while($rows = mysqli_fetch_assoc($result)) {
-            $id = $rows['id'];
+        while($user = mysqli_fetch_assoc($allUsers)) {
+            $id = $user['id'];
             echo "<option value='$id'>$id</option>";
+        }
+    }
+
+    function showAllUsers() {
+        global $connection;
+        $query = "SELECT * FROM users";
+     
+        $allUsers = mysqli_query($connection, $query);
+
+        if(!$allUsers) {
+           die("Select SQL command failed: " . mysqli_error($connection));
+        }
+        
+        // You can also user mysqli_fetch_row() to return a normal array.
+        while($user = mysqli_fetch_assoc($allUsers)) {
+            echo "<pre>";
+                print_r($user);
+            echo "</pre>";
         }
     }
 
@@ -30,6 +68,8 @@
             $result = mysqli_query($connection, $update);
             if(!$result) {
                 die("Update command failed: " . mysqli_error($connection));
+            } else {
+                echo "User updated.";
             }
         }
     }
@@ -44,7 +84,9 @@
 
             $result = mysqli_query($connection, $delete);
             if(!$result) {
-                die("Update command failed: " . mysqli_error($connection));
+                die("Delete command failed: " . mysqli_error($connection));
+            } else {
+                echo "User deleted.";
             }
         }
     }
