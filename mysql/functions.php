@@ -33,4 +33,19 @@
             }
         }
     }
+
+    function deleteUser() {
+        global $connection;
+        if(isset($_POST['submit'])) {
+            $id = $_POST['id'];
+
+            $delete = "DELETE FROM users ";
+            $delete .= "WHERE id = $id ";
+
+            $result = mysqli_query($connection, $delete);
+            if(!$result) {
+                die("Update command failed: " . mysqli_error($connection));
+            }
+        }
+    }
 ?>

@@ -1,6 +1,6 @@
 <?php include "functions.php"; ?>
 <?php
-    updateUser();
+    deleteUser();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -15,15 +15,7 @@
     <body>
         <div class="container">
             <div class="col-xs-6">
-                <form action="login_update.php" method="POST">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control">
-                    </div>
+                <form action="login_delete.php" method="POST">
                     <div class="form-group">
                         <select name="id" id="">
                         <?php
@@ -31,7 +23,7 @@
                         ?>
                     </select>
                     </div>
-                    <input class="btn btn-primary" type="submit" name="submit" value="Update">
+                    <input class="btn btn-primary" type="submit" name="submit" value="Delete">
                 </form>
             </div>
         </div>
