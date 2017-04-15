@@ -2,8 +2,8 @@
 
 $cookieName = 'cookieName';
 $cookieValue = '3jd93rj20ej9jdj32';
-// time() means the seconds from 1970 to now, and 60*60*24*7 means one week.
-$expiration = time() + (60*60*24*7);
+// time() means the seconds from 1970 to now, and (60 * 60 * 24 * 7) means one week.
+$expiration = time() + (60 * 60 * 24 * 7);
 
 setcookie($cookieName, $cookieValue, $expiration);
 
@@ -19,8 +19,13 @@ setcookie($cookieName, $cookieValue, $expiration);
 
     <body>
         <?php
-    
-    ?>
+            if(isset($_COOKIE[$cookieName])) {
+                $someOne = $_COOKIE[$cookieName];
+                echo $someOne;
+            } else {
+                $someOne = "";
+            };
+        ?>
     </body>
 
     </html>
