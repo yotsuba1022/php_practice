@@ -6,6 +6,12 @@
             // For preventing SQL injection.
             $username = mysqli_real_escape_string($connection, $_POST['username']);
             $password = mysqli_real_escape_string($connection, $_POST['password']);
+            
+            // For encrypt, please refer to http://php.net/manual/en/function.crypt.php
+            $hashFormat = "$2y$10$";
+            $salt = "rurumaomaoisverycuteruru";
+            $hashFormatAndSalt = $hashFormat . $salt;
+            $password = crypt($password, $hashFormatAndSalt);
 
             $create = "INSERT INTO users(username, password) ";
             $create .= "VALUES ('$username', '$password')";
