@@ -3,8 +3,9 @@
     function createUser() {
         global $connection;
         if(isset($_POST['submit'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
+            // For preventing SQL injection.
+            $username = mysqli_real_escape_string($connection, $_POST['username']);
+            $password = mysqli_real_escape_string($connection, $_POST['password']);
 
             $create = "INSERT INTO users(username, password) ";
             $create .= "VALUES ('$username', '$password')";
@@ -57,8 +58,8 @@
         global $connection;
         if(isset($_POST['submit'])) {
             $id = $_POST['id'];
-            $username = $_POST['username'];
-            $password = $_POST['password'];
+            $username = mysqli_real_escape_string($connection, $_POST['username']);
+            $password = mysqli_real_escape_string($connection, $_POST['password']);
 
             $update = "UPDATE users SET ";
             $update .= "username = '$username', ";
