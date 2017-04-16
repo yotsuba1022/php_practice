@@ -29,7 +29,7 @@
 
     $tank -> changeWheels();
     echo "The tank has " . $tank -> wheels . " wheels<br>";
-    
+
     function checkClass() {
         if(class_exists("Car")) {
             echo "Class Car exists <br>";
