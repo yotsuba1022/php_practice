@@ -1,6 +1,8 @@
 <?php
     class Car {
         
+        static $TYPE = "Ground Vehicle";
+            
         // With private, the subclass should call the set method to change the value
         private $wheels;
         private $engine;
@@ -11,6 +13,22 @@
             $this -> wheels = 4;
             $this -> engine = 1;
             $this -> color = "Crystal Blue";
+        }
+        
+        public function getType() {
+            /*
+                To access a static attribute, please use 
+                
+                CLASS_NAME::$STATIC_ATTR_NAME
+                
+                or
+                
+                $this::$STATIC_ATTR_NAME
+                
+                instead of $this -> ATTR_NAME
+            */
+            //return $this::$TYPE;
+            return Car::$TYPE;
         }
         
         public function carStart() {
@@ -36,6 +54,7 @@
         public function setColor() {
             $this -> color = "White";
         }
+        
     }
     
     // checkClass();
@@ -45,6 +64,8 @@
     $car -> carStart();
     $car -> moveWheels();
     
+    echo "The type of car is: " . Car::getType() . "<br>";
+
     echo "The car has " . $car -> getWheels() . " wheels<br>";
 
     $tank -> setWheels(16);
