@@ -1,26 +1,40 @@
 <?php
     class Car {
         
-        var $wheels;
-        var $engine;
-        var $color;
+        // With private, the subclass should call the set method to change the value
+        private $wheels;
+        private $engine;
+        // With protected, the subclass can modify the attr directly.
+        protected $color;
         
-        function __construct() {
+        public function __construct() {
             $this -> wheels = 4;
             $this -> engine = 1;
             $this -> color = "Crystal Blue";
         }
         
-        function carStart() {
+        public function carStart() {
             echo "ZoomZoom~~~ <br>";
         }
         
-        function moveWheels() {
+        public function moveWheels() {
             echo "Wheels moves. <br>";
         }
-        
-        function changeWheels($numOfWheels) {
+    
+        public function getWheels() {
+            return $this -> wheels;
+        }
+    
+        public function setWheels($numOfWheels) {
             $this -> wheels = $numOfWheels;
+        }
+        
+        public function getColor() {
+            return $this -> color;
+        }
+        
+        public function setColor() {
+            $this -> color = "White";
         }
     }
     
@@ -31,10 +45,10 @@
     $car -> carStart();
     $car -> moveWheels();
     
-    echo "The car has " . $car -> wheels . " wheels<br>";
+    echo "The car has " . $car -> getWheels() . " wheels<br>";
 
-    $tank -> changeWheels(16);
-    echo "The tank has " . $tank -> wheels . " wheels<br>";
+    $tank -> setWheels(16);
+    echo "The tank has " . $tank -> getWheels() . " wheels<br>";
 
     function checkClass() {
         if(class_exists("Car")) {
