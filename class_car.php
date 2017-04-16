@@ -1,9 +1,15 @@
 <?php
     class Car {
         
-        var $wheels = 4;
-        var $engine = 1;
-        var $color = "Crystal Blue";
+        var $wheels;
+        var $engine;
+        var $color;
+        
+        function __construct() {
+            $this -> wheels = 4;
+            $this -> engine = 1;
+            $this -> color = "Crystal Blue";
+        }
         
         function carStart() {
             echo "ZoomZoom~~~ <br>";
@@ -13,8 +19,8 @@
             echo "Wheels moves. <br>";
         }
         
-        function changeWheels() {
-            $this -> wheels = 16;
+        function changeWheels($numOfWheels) {
+            $this -> wheels = $numOfWheels;
         }
     }
     
@@ -27,7 +33,7 @@
     
     echo "The car has " . $car -> wheels . " wheels<br>";
 
-    $tank -> changeWheels();
+    $tank -> changeWheels(16);
     echo "The tank has " . $tank -> wheels . " wheels<br>";
 
     function checkClass() {
