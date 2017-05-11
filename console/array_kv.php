@@ -5,6 +5,8 @@
 
     $input["ruru"] = "嚕嚕咕嚕咕嚕";
     $input["pupu"] = "PUPU";
+    
+    print "Should be null: " . $result["item_url"] . PHP_EOL;
 
     if(!empty($input["ruru"])) {
         $result["item_url"] = "https://tw.buy.yahoo.com/gdsale/" . $input["ruru"] . "-" . $gdId . ".html";
